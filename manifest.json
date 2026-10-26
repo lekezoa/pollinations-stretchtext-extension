@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Pollinations StretchText",
+  "version": "1.0.0",
+  "description": "Turns long-winded web articles into dynamic, expandable StretchText powered by Pollinations AI.",
+  "permissions": ["activeTab", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "StretchText Settings"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["stretch.css"]
+    }
+  ]
+}

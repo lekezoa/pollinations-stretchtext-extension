@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { width: 280px; font-family: sans-serif; background: #0d0e15; color: #fff; padding: 16px; margin: 0; }
+        h3 { margin-top: 0; color: #ffd000; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+        p { font-size: 13px; color: #8b92a5; line-height: 1.4; }
+        button { width: 100%; padding: 10px; background: #ffd000; color: #000; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+        button:hover { background: #e6bc00; }
+    </style>
+</head>
+<body>
+    <h3>🌸 StretchText</h3>
+    <p>Turns dense paragraphs into concise 1-sentence summaries with interactive [+] unfolds.</p>
+    <button id="activateBtn">Transform This Page</button>
+    <script>
+        document.getElementById('activateBtn').addEventListener('click', async () => {
+            const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+            chrome.tabs.sendMessage(tab.id, { action: "stretchify" });
+            window.close();
+        });
+    </script>
+</body>
+</html>
